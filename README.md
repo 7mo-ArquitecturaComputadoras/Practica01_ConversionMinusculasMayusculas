@@ -1,4 +1,4 @@
-# Práctica — Conversión de Minúsculas a Mayúsculas en Ensamblador x86
+# Práctica 01 — Conversión de Minúsculas a Mayúsculas en Ensamblador x86
 
 ## Descripción
 
@@ -18,7 +18,7 @@ Si carácter fuera de ese rango:
 ## Estructura del Proyecto
 
 ```
-Practica_ConversionMayusculas/
+Practica01_ConversionMayusculas/
 └── conversion.asm    # Programa principal: recorre la cadena y aplica la conversión
 ```
 
