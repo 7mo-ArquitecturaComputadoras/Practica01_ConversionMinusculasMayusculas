@@ -150,6 +150,47 @@ El programa se divide internamente en dos secciones:
 
 El flujo general del programa es el siguiente:
 
+\begin{figure}[H]
+    \centering
+    \resizebox{0.8\textwidth}{!}{%
+        \begin{tikzpicture}[
+            startstop/.style={rectangle, rounded corners=8pt, draw=gray!70, fill=gray!15,
+                              minimum width=3.5cm, minimum height=0.8cm, font=\small},
+            process/.style  ={rectangle, draw=blue!50, fill=blue!7,
+                              minimum width=3.5cm, minimum height=0.8cm, font=\small},
+            decision/.style ={diamond, aspect=2.2, draw=orange!70, fill=orange!10,
+                              minimum width=3.8cm, font=\small\itshape, inner sep=1pt},
+            convert/.style  ={rectangle, draw=green!60!black, fill=green!10,
+                              minimum width=3.5cm, minimum height=0.8cm, font=\small},
+            arr/.style      ={-Stealth, thick, gray!80}
+        ]
+            \node[startstop] (inicio)   {Inicio: ESI $\leftarrow$ \texttt{cad}};
+            \node[process,   below=0.8cm of inicio]  (leer)    {AL $\leftarrow$ [ESI]};
+            \node[decision,  below=0.8cm of leer]    (es0)     {AL == 0?};
+            \node[startstop, right=2.2cm of es0]     (fin)     {Fin};
+            \node[decision,  below=0.9cm of es0]     (rango)   {'a' $\leq$ AL $\leq$ 'z'?};
+            \node[convert,   below=0.9cm of rango]   (conv)    {AL $\leftarrow$ AL $-$ 32};
+            \node[process,   below=0.8cm of conv]    (escribe) {[ESI] $\leftarrow$ AL};
+            \node[process,   below=0.8cm of escribe] (inc)     {ESI $\leftarrow$ ESI $+$ 1};
+
+            \draw[arr] (inicio)  -- (leer);
+            \draw[arr] (leer)    -- (es0);
+            \draw[arr] (es0)     -- node[above, font=\scriptsize]{Sí} (fin);
+            \draw[arr] (es0)     -- node[right, font=\scriptsize]{No} (rango);
+            \draw[arr] (rango)   -- node[right, font=\scriptsize]{Sí} (conv);
+            \draw[arr] (conv)    -- (escribe);
+            \draw[arr] (escribe) -- (inc);
+
+            \draw[arr] (rango.west) -- ++(-1.5,0) |-
+                  node[near start, above, font=\scriptsize]{No} (inc.west);
+
+            \draw[arr] (inc.east) -- ++(1.8,0) |- (leer.east);
+
+        \end{tikzpicture}%
+    }
+    \caption{Diagrama de flujo del algoritmo de conversión}
+\end{figure}
+
 \begin{enumerate}
     \item El programa apunta al primer carácter de la cadena.
     \item Lee el carácter y verifica si es una letra minúscula (valor entre 97 y 122).
@@ -214,85 +255,12 @@ END main
 \end{lstlisting}
 
 % ============================================================
-\section{¿Cómo funciona la conversión?}
-
-El siguiente diagrama muestra el recorrido completo del programa para cada carácter de la cadena:
-
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}[
-        startstop/.style={rectangle, rounded corners=8pt, draw=gray!70, fill=gray!15,
-                          minimum width=3.5cm, minimum height=0.8cm, font=\small},
-        process/.style  ={rectangle, draw=blue!50, fill=blue!7,
-                          minimum width=3.5cm, minimum height=0.8cm, font=\small},
-        decision/.style ={diamond, aspect=2.2, draw=orange!70, fill=orange!10,
-                          minimum width=3.8cm, font=\small\itshape, inner sep=1pt},
-        convert/.style  ={rectangle, draw=green!60!black, fill=green!10,
-                          minimum width=3.5cm, minimum height=0.8cm, font=\small},
-        arr/.style      ={-Stealth, thick, gray!80}
-    ]
-        \node[startstop] (inicio)   {Inicio: ESI $\leftarrow$ \texttt{cad}};
-        \node[process,   below=0.8cm of inicio]  (leer)    {AL $\leftarrow$ [ESI]};
-        \node[decision,  below=0.8cm of leer]    (es0)     {AL == 0?};
-        \node[startstop, right=2.2cm of es0]     (fin)     {Fin};
-        \node[decision,  below=0.9cm of es0]     (rango)   {'a' $\leq$ AL $\leq$ 'z'?};
-        \node[convert,   below=0.9cm of rango]   (conv)    {AL $\leftarrow$ AL $-$ 32};
-        \node[process,   below=0.8cm of conv]    (escribe) {[ESI] $\leftarrow$ AL};
-        \node[process,   below=0.8cm of escribe] (inc)     {ESI $\leftarrow$ ESI $+$ 1};
-
-        \draw[arr] (inicio)  -- (leer);
-        \draw[arr] (leer)    -- (es0);
-        \draw[arr] (es0)     -- node[above, font=\scriptsize]{Sí} (fin);
-        \draw[arr] (es0)     -- node[right, font=\scriptsize]{No} (rango);
-        \draw[arr] (rango)   -- node[right, font=\scriptsize]{Sí} (conv);
-        \draw[arr] (conv)    -- (escribe);
-        \draw[arr] (escribe) -- (inc);
-
-        % "No" branch de rango hacia inc (sin convertir)
-        \draw[arr] (rango.west) -- ++(-1.5,0) |-
-              node[near start, above, font=\scriptsize]{No} (inc.west);
-
-        % Flecha de retorno de inc hacia leer
-        \draw[arr] (inc.east) -- ++(1.8,0) |-  (leer.east);
-
-    \end{tikzpicture}
-    \caption{Diagrama de flujo del algoritmo de conversión}
-\end{figure}
-
-Para comprender mejor cómo opera el programa, se muestra a continuación la traza completa para la cadena \texttt{"Hola Mundo"}.
-
-\begin{table}[H]
-    \centering
-    \caption{Traza de ejecución carácter por carácter}
-    \begin{tabular}{@{}ccccp{4cm}@{}}
-        \toprule
-        \textbf{Paso} & \textbf{Carácter} & \textbf{ASCII} & \textbf{¿Minúscula?} & \textbf{Acción} \\
-        \midrule
-        1  & \texttt{H} &  72 & No  & Se conserva \\
-        2  & \texttt{o} & 111 & Sí  & $111 - 32 = 79$ → \texttt{O} \\
-        3  & \texttt{l} & 108 & Sí  & $108 - 32 = 76$ → \texttt{L} \\
-        4  & \texttt{a} &  97 & Sí  & $97  - 32 = 65$ → \texttt{A} \\
-        5  & \texttt{ } &  32 & No  & Se conserva (espacio) \\
-        6  & \texttt{M} &  77 & No  & Se conserva \\
-        7  & \texttt{u} & 117 & Sí  & $117 - 32 = 85$ → \texttt{U} \\
-        8  & \texttt{n} & 110 & Sí  & $110 - 32 = 78$ → \texttt{N} \\
-        9  & \texttt{d} & 100 & Sí  & $100 - 32 = 68$ → \texttt{D} \\
-        10 & \texttt{o} & 111 & Sí  & $111 - 32 = 79$ → \texttt{O} \\
-        11 & \texttt{0} &   0 & ---  & Fin de cadena \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-El resultado final almacenado en memoria es \texttt{"HOLA MUNDO"}.
-
-% ============================================================
 \section{Instrucciones x86 utilizadas}
 
 La siguiente tabla resume todas las instrucciones ensamblador empleadas en el programa, con una explicación accesible de su función:
 
 \begin{table}[H]
     \centering
-    \caption{Instrucciones x86 utilizadas en el programa}
     \begin{tabular}{@{}lp{9cm}@{}}
         \toprule
         \textbf{Instrucción} & \textbf{Qué hace en términos simples} \\
@@ -309,6 +277,7 @@ La siguiente tabla resume todas las instrucciones ensamblador empleadas en el pr
         \texttt{CALL} & Llama a una función o procedimiento externo. \\
         \bottomrule
     \end{tabular}
+    \caption{Instrucciones x86 utilizadas en el programa}
 \end{table}
 
 % ============================================================
