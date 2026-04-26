@@ -164,27 +164,34 @@ El flujo general del programa es el siguiente:
                               minimum width=3.5cm, minimum height=0.8cm, font=\small},
             arr/.style      ={-Stealth, thick, gray!80}
         ]
+            % --- Nodos Centrales ---
             \node[startstop] (inicio)   {Inicio: ESI $\leftarrow$ \texttt{cad}};
             \node[process,   below=0.8cm of inicio]  (leer)    {AL $\leftarrow$ [ESI]};
             \node[decision,  below=0.8cm of leer]    (es0)     {AL == 0?};
-            \node[startstop, right=2.2cm of es0]     (fin)     {Fin};
             \node[decision,  below=0.9cm of es0]     (rango)   {'a' $\leq$ AL $\leq$ 'z'?};
             \node[convert,   below=0.9cm of rango]   (conv)    {AL $\leftarrow$ AL $-$ 32};
             \node[process,   below=0.8cm of conv]    (escribe) {[ESI] $\leftarrow$ AL};
             \node[process,   below=0.8cm of escribe] (inc)     {ESI $\leftarrow$ ESI $+$ 1};
 
+            % --- Nodo Fin (Derecha, alineado con es0) ---
+            \node[startstop, right=2.2cm of es0]     (fin)     {Fin};
+
+            % --- Enlaces de la ruta principal ---
             \draw[arr] (inicio)  -- (leer);
             \draw[arr] (leer)    -- (es0);
-            \draw[arr] (es0)     -- node[above, font=\scriptsize]{Sí} (fin);
             \draw[arr] (es0)     -- node[right, font=\scriptsize]{No} (rango);
             \draw[arr] (rango)   -- node[right, font=\scriptsize]{Sí} (conv);
             \draw[arr] (conv)    -- (escribe);
             \draw[arr] (escribe) -- (inc);
 
-            \draw[arr] (rango.west) -- ++(-1.5,0) |-
-                  node[near start, above, font=\scriptsize]{No} (inc.west);
+            % --- Salida al Fin (Carril Derecho Superior) ---
+            \draw[arr] (es0)     -- node[above, font=\scriptsize]{Sí} (fin);
 
-            \draw[arr] (inc.east) -- ++(1.8,0) |- (leer.east);
+            % --- Bypass de mayúsculas/símbolos (Carril Derecho Inferior) ---
+            \draw[arr] (rango.east) -- ++(1.5,0) |- node[near start, above, font=\scriptsize]{No} (inc.east);
+
+            % --- Bucle de Retorno (Carril Izquierdo, libre de cruces) ---
+            \draw[arr] (inc.west) -- ++(-1.8,0) |- (leer.west);
 
         \end{tikzpicture}%
     }
