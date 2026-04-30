@@ -7,7 +7,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[english]{babel}
+\usepackage[spanish]{babel}
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{listings}
@@ -15,6 +15,7 @@
 \usepackage{booktabs}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\usepackage{xurl}
 \usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{caption}
@@ -237,7 +238,7 @@ comparar_caracter:
 
     mov al, [esi]           ; AL = caracter actual
     cmp al, 0               ; ?Es el fin de la cadena?
-    je  finalizar           ; Si es 0, terminar
+    je  fin                 ; Si es 0, terminar
 
     ; Verificar si el caracter es una minuscula
     cmp al, 'a'             ; ?Es menor que 'a' (97)?
@@ -253,7 +254,7 @@ siguiente:
     inc esi                 ; Avanzar al siguiente caracter
     jmp comparar_caracter   ; Repetir el ciclo
 
-finalizar:
+fin:
     push 0
     call ExitProcess@4      ; Cerrar el programa
 
@@ -302,18 +303,16 @@ La modificación ocurre \textbf{directamente en memoria}: el programa lee el car
 % ============================================================
 \section{Ejemplo de ejecución}
 
-Al ensamblar y ejecutar el programa en un depurador, se puede verificar que la región de memoria donde estaba almacenada la cadena \texttt{"Hola Mundo"} es sobreescrita con \texttt{"HOLA MUNDO"}:
-
 \begin{verbatim}
 Antes de ejecutar:  48 6F 6C 61 20 4D 75 6E 64 6F 00
                     H  o  l  a     M  u  n  d  o  \0
 \end{verbatim}
 
-\begin{figure}[hbtp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{memoria_01.png}
-    \caption{Registros de memoria con "Hola Mundo"}
-    \label{fig:etiqueta}
+    \caption{Ventana Memory de Visual Studio: cadena \texttt{"Hola Mundo"} antes de la conversión}
+    \label{fig:memoria_antes}
 \end{figure}
 
 \begin{verbatim}
@@ -321,17 +320,17 @@ Después de ejecutar: 48 4F 4C 41 20 4D 55 4E 44 4F 00
                      H  O  L  A     M  U  N  D  O  \0
 \end{verbatim}
 
-\begin{figure}[hbtp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{memoria_02.png}
-    \caption{Registros de memoria con "HOLA MUNDO"}
-    \label{fig:etiqueta}
+    \caption{Ventana Memory de Visual Studio: cadena \texttt{"HOLA MUNDO"} después de la conversión}
+    \label{fig:memoria_despues}
 \end{figure}
 
 % ============================================================
 \section{Repositorio GitHub}
 
-https://github.com/7mo-ArquitecturaComputadoras/Practica01\_ConversionMinusculasMayusculas
+\url{https://github.com/7mo-ArquitecturaComputadoras/Practica01\_ConversionMinusculasMayusculas}
 
 % ============================================================
 \section{Conclusiones}
