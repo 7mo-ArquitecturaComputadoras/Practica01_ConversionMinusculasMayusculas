@@ -63,19 +63,19 @@ fin:
 ```
 Practica01_ConversionMinusculasMayusculas/
 ├── documentacion/
+│   ├── README_compilacion_latex.md                       # Cómo compilar el .tex a PDF
 │   ├── reporte.tex                                       # Reporte técnico en LaTeX
-│   ├── Practica01_ConversionMinusculasMayusculas.pdf     # Reporte ya compilado
-│   ├── diagramas/                                        # Imágenes usadas en el reporte
-│   │   ├── memoria_01.png
-│   │   └── memoria_02.png
-│   └── README_compilacion_latex.md                       # Cómo compilar el .tex a PDF
+│   ├── reporte.pdf                                       # Reporte ya compilado
+│   └── imagenes/                                         # Imágenes usadas en el reporte
+│       ├── memoria_01.png
+│       └── memoria_02.png
 │
 ├── proyecto/
-│   ├── src/
-│   │   └── conversion.asm                                # Código fuente principal (MASM x86)
-│   ├── Practica01_ConversionMinusculasMayusculas.slnx    # Solución de Visual Studio
-│   └── Practica01_ConversionMinusculasMayusculas.vcxproj # Proyecto MSBuild + MASM
 │   ├── README_instalacion.md                             # Guía de instalación y puesta en marcha
+│   ├── Practica01_ConversionMinusculasMayusculas.slnx    # Solución de Visual Studio
+│   ├── Practica01_ConversionMinusculasMayusculas.vcxproj # Proyecto MSBuild + MASM
+│   └── src/
+│       └── conversion.asm                                # Código fuente principal (MASM x86)
 |
 ├── .gitignore                                            # Archivos ignorados por Git
 └── README.md                                             # Este archivo
@@ -137,13 +137,11 @@ Resultado final en memoria: **`"HOLA MUNDO"`**.
 
 ## 📄 Documentación adicional
 
-Toda la documentación complementaria del proyecto se encuentra en la carpeta [`documentacion/`](documentacion/):
-
 | Documento | Descripción |
 |---|---|
 | 🛠️ [`README_instalacion.md`](proyecto/README_instalacion.md) | Cómo instalar Git, Visual Studio con MASM, compilar y ejecutar el programa paso a paso. |
 | 📄 [`README_compilacion_latex.md`](documentacion/README_compilacion_latex.md) | Cómo regenerar el PDF del reporte a partir de `main.tex` usando TeX Live, Geany o VS Code, tanto en Linux como en Windows. |
-| 📕 [`Practica01_ConversionMinusculasMayusculas.pdf`](documentacion/Practica01_ConversionMinusculasMayusculas.pdf) | Reporte técnico ya compilado, con explicación detallada y capturas de memoria. |
+| 📕 [`reporte.pdf`](documentacion/reporte.pdf) | Reporte técnico ya compilado, con explicación detallada y capturas de memoria. |
 | 📝 [`reporte.tex`](documentacion/reporte.tex) | Fuente LaTeX del reporte. |
 
 ---
