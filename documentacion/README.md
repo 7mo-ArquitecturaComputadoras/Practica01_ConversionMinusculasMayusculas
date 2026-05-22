@@ -182,10 +182,10 @@ Si aparece información de versión, está todo correcto.
 
 Si no quieres (o no puedes) instalar programas en tu equipo, existen **editores en línea** que compilan tu archivo `.tex` directamente desde el navegador. En algunos solo necesitas copiar y pegar tu código `.tex` o crear una cuenta gratuita y empezar a escribir.
 
----
-
-**Autor: Edson Joel Carrera Avila**
-
 🔗 **Enlace:** [https://www.overleaf.com](https://www.overleaf.com)
 
 🔗 **Enlace:** [https://papeeria.com](https://papeeria.com)
+
+---
+
+**Autor: Edson Joel Carrera Avila**
