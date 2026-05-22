@@ -806,6 +806,7 @@ jspm_packages/
 *.ps
 *.eps
 *.xdv            
+*.pdf   
 
 # --- Archivos de registro y diagnóstico ---
 *.log
@@ -851,8 +852,7 @@ jspm_packages/
 *.idv
 *.lg
 *.tmp
-*.xref
-*.html           
+*.xref          
 
 # --- Directorios de salida habituales ---
 _latex_build/
