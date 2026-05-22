@@ -170,12 +170,4 @@ El programa **no imprime nada en pantalla**: modifica silenciosamente la cadena 
 
 ---
 
-## 📄 ¿Y el reporte en LaTeX?
-
-Esta guía cubre únicamente la compilación del **código ensamblador**. Si además quieres recompilar el reporte técnico de la práctica (`documentacion/main.tex`), consulta la guía dedicada:
-
-➡️ [Cómo generar un PDF desde un archivo `.tex`](documentacion/README_compilacion_latex.md)
-
----
-
-**Autor: Edson Joel Carrera Avila**
+> **Autor:** Edson Joel Carrera Avila
