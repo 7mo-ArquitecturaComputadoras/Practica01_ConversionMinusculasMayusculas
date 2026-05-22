@@ -806,7 +806,6 @@ jspm_packages/
 *.ps
 *.eps
 *.xdv            
-*.pdf   
 
 # --- Archivos de registro y diagnóstico ---
 *.log

@@ -188,4 +188,4 @@ Si no quieres (o no puedes) instalar programas en tu equipo, existen **editores 
 
 ---
 
-**Autor: Edson Joel Carrera Avila**
+> **Autor:** Edson Joel Carrera Avila
