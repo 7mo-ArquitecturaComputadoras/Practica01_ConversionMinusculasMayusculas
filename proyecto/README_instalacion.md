@@ -80,11 +80,9 @@ Si aparece un número de versión, todo está listo.
 Abre el **Símbolo del sistema** (`cmd`) o **Git Bash**, ubícate en la carpeta donde quieras guardar el proyecto y ejecuta:
 
 ```bash
-git clone <url-del-repositorio>
+git clone git@github.com:7mo-ArquitecturaComputadoras/Practica01_ConversionMinusculasMayusculas.git
 cd Practica01_ConversionMinusculasMayusculas
 ```
-
-> 💡 Reemplaza `<url-del-repositorio>` por el enlace HTTPS o SSH del repositorio en GitHub/GitLab.
 
 ---
 
@@ -176,7 +174,7 @@ El programa **no imprime nada en pantalla**: modifica silenciosamente la cadena 
 
 Esta guía cubre únicamente la compilación del **código ensamblador**. Si además quieres recompilar el reporte técnico de la práctica (`documentacion/main.tex`), consulta la guía dedicada:
 
-➡️ [Cómo generar un PDF desde un archivo `.tex`](README_compilacion_latex.md)
+➡️ [Cómo generar un PDF desde un archivo `.tex`](documentacion/README_compilacion_latex.md)
 
 ---
 
