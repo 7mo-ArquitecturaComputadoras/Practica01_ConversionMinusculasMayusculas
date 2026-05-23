@@ -142,7 +142,7 @@ Resultado final en memoria: **`"HOLA MUNDO"`**.
 | Documento | Descripción |
 |---|---|
 | 🛠️ [`README_instalacion.md`](proyecto/README_instalacion.md) | Cómo instalar Git, Visual Studio con MASM, compilar y ejecutar el programa paso a paso. |
-| 📄 [`README_compilacion_latex.md`](documentacion/README_compilacion_latex.md) | Cómo regenerar el PDF del reporte a partir de `main.tex` usando TeX Live, Geany o VS Code, tanto en Linux como en Windows. |
+| 📄 [`README_compilacion_latex.md`](documentacion/README_compilacion_latex.md) | Cómo regenerar el PDF del reporte a partir de `reporte.tex` usando TeX Live, Geany o VS Code, tanto en Linux como en Windows. |
 | 📕 [`reporte.pdf`](documentacion/reporte.pdf) | Reporte técnico ya compilado, con explicación detallada y capturas de memoria. |
 | 📝 [`reporte.tex`](documentacion/reporte.tex) | Fuente LaTeX del reporte. |
 
