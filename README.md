@@ -67,8 +67,6 @@ Practica01_ConversionMinusculasMayusculas/
 │   ├── reporte.tex                                       # Reporte técnico en LaTeX
 │   ├── reporte.pdf                                       # Reporte ya compilado
 │   └── imagenes/                                         # Imágenes usadas en el reporte
-│       ├── memoria_01.png
-│       └── memoria_02.png
 │
 ├── proyecto/
 │   ├── README_instalacion.md                             # Guía de instalación y puesta en marcha
@@ -92,7 +90,10 @@ La guía detallada con todos los pasos (instalar Git, Visual Studio, habilitar M
 
 Resumen rápido para quien ya tiene el entorno listo:
 
-1. `git clone <url-del-repositorio>`
+1. Abre el **Símbolo del sistema** (`cmd`) o **Git Bash**, ubícate en la carpeta donde quieras guardar el proyecto y ejecuta:
+```bash
+git clone git@github.com:7mo-ArquitecturaComputadoras/Practica01_ConversionMinusculasMayusculas.git
+```
 2. Abrir `proyecto/Practica01_ConversionMinusculasMayusculas.slnx` en Visual Studio.
 3. Seleccionar configuración **Debug | Win32**.
 4. Compilar con `Ctrl + Shift + B` y ejecutar con `F5`.
