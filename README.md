@@ -77,6 +77,7 @@ Practica01_ConversionMinusculasMayusculas/
 │   └── src/
 │       └── conversion.asm                                # Código fuente principal (MASM x86)
 |
+├── .gitattributes                                        # Normalización de finales de línea
 ├── .gitignore                                            # Archivos ignorados por Git
 └── README.md                                             # Este archivo
 ```
