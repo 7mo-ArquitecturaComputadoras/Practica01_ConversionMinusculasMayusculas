@@ -81,7 +81,6 @@ Abre el **Símbolo del sistema** (`cmd`) o **Git Bash**, ubícate en la carpeta 
 
 ```bash
 git clone git@github.com:7mo-ArquitecturaComputadoras/Practica01_ConversionMinusculasMayusculas.git
-cd Practica01_ConversionMinusculasMayusculas
 ```
 
 ---
