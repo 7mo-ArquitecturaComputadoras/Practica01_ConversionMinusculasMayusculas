@@ -1,4 +1,4 @@
-# 🔤 Práctica 01 — Conversión de Minúsculas a Mayúsculas en Ensamblador x86
+# 🔢 Práctica 01 — Conversión de Minúsculas a Mayúsculas en Ensamblador x86
 
 Programa escrito en **ensamblador x86 (MASM)** que recorre una cadena de texto almacenada en memoria y convierte cada letra **minúscula** a su equivalente en **mayúscula**, operando directamente sobre los valores ASCII de los caracteres, sin usar funciones externas de C/C++.
 
